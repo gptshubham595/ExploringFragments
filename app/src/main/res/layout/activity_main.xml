@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:gravity="center"
+            android:text="Main Activity: AddToBackStack="
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/btnAddA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/backStackSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnAddA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add A"
+            app:layout_constraintBottom_toTopOf="@id/fragment_container"
+            app:layout_constraintEnd_toStartOf="@id/btnReplA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backStackSwitch" />
+
+        <Button
+            android:id="@+id/btnReplA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rep A"
+            app:layout_constraintBottom_toTopOf="@id/fragment_container"
+            app:layout_constraintEnd_toStartOf="@id/btnAddB"
+            app:layout_constraintStart_toEndOf="@id/btnAddA"
+            app:layout_constraintTop_toBottomOf="@id/backStackSwitch" />
+
+        <Button
+            android:id="@+id/btnAddB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add B"
+            app:layout_constraintBottom_toTopOf="@id/fragment_container"
+            app:layout_constraintEnd_toStartOf="@id/btnRepB"
+            app:layout_constraintStart_toEndOf="@id/btnReplA"
+            app:layout_constraintTop_toBottomOf="@id/backStackSwitch" />
+
+        <Button
+            android:id="@+id/btnRepB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rep B"
+            app:layout_constraintBottom_toTopOf="@id/fragment_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnAddB"
+            app:layout_constraintTop_toBottomOf="@id/backStackSwitch" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/holo_purple"
+            app:layout_constraintBottom_toTopOf="@id/scrollView"
+            app:layout_constraintTop_toBottomOf="@id/btnReplA" />
+
+        <!--        <ScrollView-->
+        <!--            android:id="@+id/scrollView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            android:layout_margin="5dp"-->
+        <!--            android:scrollbars="vertical"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/fragment_container"></ScrollView>-->
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_container">
+
+            <TextView
+                android:id="@+id/textViewTaskInfo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#000000"
+                android:lines="100"
+                android:padding="5dp"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_container" />
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
