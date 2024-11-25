@@ -2,16 +2,17 @@ plugins {
     alias(libs.plugins.androidApplication)
     kotlin("android")
     kotlin("kapt")
+    alias(libs.plugins.hilt.plugin)
 }
 
 android {
     namespace = "com.example.exploringfragments"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.exploringfragments"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -54,4 +55,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+
+    implementation(libs.androidx.fragment.ktx)
 }

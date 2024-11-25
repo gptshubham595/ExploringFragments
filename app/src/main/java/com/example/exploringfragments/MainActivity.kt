@@ -3,15 +3,23 @@ package com.example.exploringfragments
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
 import com.example.exploringfragments.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val TAG = MainActivity::class.java.simpleName
     private val isBackStackEnabled = AtomicBoolean(false)
+
+    private val viewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate")
@@ -20,6 +28,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        initObservers()
+    }
+
+    fun initObservers() {
+        lifecycleScope.launch {
+            viewModel.textData.collect {
+                addText(it)
+            }
+        }
+    }
+
+    fun addText(text: String) {
+        Log.d(TAG, "addText: $text")
+        binding.textViewTaskInfo.text =
+            "${binding.textViewTaskInfo.text} \n\n $text"
     }
 
     private fun initView() {
