@@ -6,14 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.exploringfragments.databinding.FragmentCBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class FragmentC : Fragment() {
 
     private lateinit var binding: FragmentCBinding
@@ -38,7 +34,7 @@ class FragmentC : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentCBinding.inflate(inflater,container, false)
+        binding = FragmentCBinding.inflate(inflater, container, false)
         viewModel.addText("$TAG onCreateView")
         return binding.root
     }

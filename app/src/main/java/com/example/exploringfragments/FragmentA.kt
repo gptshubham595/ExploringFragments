@@ -8,11 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.exploringfragments.databinding.FragmentABinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class FragmentA : Fragment() {
 
     private lateinit var binding: FragmentABinding
